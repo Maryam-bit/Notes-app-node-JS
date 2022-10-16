@@ -1,6 +1,6 @@
 import chalk  from "chalk";
 import yargs from "yargs";
-import { addNote, removeNote, listingNote } from "./notes.js"
+import { addNote, removeNote, listingNote, readNote } from "./notes.js"
 const YARGS = (yargs)(process.argv.slice(2))
 
 // customize yargs version
@@ -48,8 +48,15 @@ YARGS.command({
 YARGS.command({
     command: "read",
     describe: "Read a note",
-    handler: (() => {
-        console.log("reading a note");
+    builder: {
+        title: {
+            describe: "Note to read",
+            demandOption: true,
+            type: "string"
+        }
+    },
+    handler: ((argv) => {
+        readNote(argv.title);
     })
 })
 
