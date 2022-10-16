@@ -69,7 +69,6 @@ const loadNotes = () => {
 }
 
 export {
-    getNotes,
     addNote,
     removeNote,
     listingNote,
