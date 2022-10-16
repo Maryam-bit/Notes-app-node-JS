@@ -23,6 +23,17 @@ const addNote = (title, body) => {
     }
 }
 
+const listingNote = () => {
+    const notes = loadNotes();
+    console.log(chalk.inverse("Your Notes"));
+
+    notes.forEach(note => {
+        console.log(note.title);
+    });
+    if(!notes.length) {
+        console.log(chalk.red.inverse("No Note Found!"));
+    }
+}
 
 const removeNote = (title) => {
     const notes = loadNotes();

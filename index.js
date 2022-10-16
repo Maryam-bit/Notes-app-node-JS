@@ -1,6 +1,6 @@
 import chalk  from "chalk";
 import yargs from "yargs";
-import { addNote, removeNote } from "./notes.js"
+import { addNote, removeNote, listingNote } from "./notes.js"
 const YARGS = (yargs)(process.argv.slice(2))
 
 // customize yargs version
@@ -58,7 +58,7 @@ YARGS.command({
     command: "list",
     describe: "List your notes",
     handler: (() => {
-        console.log("listing the notes");
+        listingNote();
     })
 })
 
