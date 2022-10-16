@@ -1,10 +1,6 @@
 import fs from "fs";
 import chalk  from "chalk";
 
-const getNotes = () => {
-    return "Your notes....";
-}
-
 const addNote = (title, body) => {
     const notes = loadNotes();
     const duplicateNote = notes.find((note) => {
