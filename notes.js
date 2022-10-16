@@ -1,11 +1,11 @@
 import fs from "fs";
 import chalk  from "chalk";
 
-function getNotes () {
+const getNotes = () => {
     return "Your notes....";
 }
 
-function addNote (title, body) {
+const addNote = (title, body) => {
     const notes = loadNotes();
     const duplicateNotes = notes.filter((note) => {
         return note.title == title
@@ -24,7 +24,7 @@ function addNote (title, body) {
 }
 
 
-function removeNote (title) {
+const removeNote = (title) => {
     const notes = loadNotes();
     const notesToKeep = notes.filter(note => note.title != title)
     saveNotes(notesToKeep);
@@ -36,11 +36,11 @@ function removeNote (title) {
 }
 
 
-const saveNotes = function (notes) {
+const saveNotes = (notes) => {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
 }
-const loadNotes = function () {
+const loadNotes = () => {
     try {
         const dataBuffer = fs.readFileSync('notes.json');
         const dataJSON = dataBuffer.toString();
@@ -53,5 +53,6 @@ const loadNotes = function () {
 export {
     getNotes,
     addNote,
-    removeNote
+    removeNote,
+    listingNote
 }
