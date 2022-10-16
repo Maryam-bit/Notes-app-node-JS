@@ -1,6 +1,6 @@
 import chalk  from "chalk";
 import yargs from "yargs";
-import { addNote } from "./notes.js"
+import { addNote, removeNote } from "./notes.js"
 const YARGS = (yargs)(process.argv.slice(2))
 
 // customize yargs version
@@ -24,7 +24,7 @@ YARGS.command({
         }
     },
     handler: function (argv) {
-        addNote(argv.title, argv.body)
+        addNote(argv.title, argv.body);
     }
 })
 
@@ -32,8 +32,15 @@ YARGS.command({
 YARGS.command({
     command: "remove",
     describe: "Remove a note",
-    handler: function () {
-        console.log("removing the note");
+    builder: {
+        title: {
+            describe: "Note to remove",
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function (argv) {
+        removeNote(argv.title);
     }
 })
 
